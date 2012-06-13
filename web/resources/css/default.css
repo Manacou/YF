@@ -1,0 +1,52 @@
+html
+{
+    background: black;
+}
+
+body
+{
+    background: white;
+    width: 1000px;
+    margin: 25px auto;
+    padding: 15px;
+}
+
+/* MENU */
+#menu
+{
+    margin: 15px;
+}
+
+#menu ul
+{
+	color: white;
+	list-style: none;
+	display: inline;
+}
+
+#menu li
+{
+	float: left;
+	background-color: black;
+	height: 25px;
+	font-family: "Play";
+}
+
+#menu li img
+{
+	background-color: white;
+	margin: 0px;
+}
+
+#menu li .label
+{
+    padding-right: 5px;
+}
+
+#menu input.button
+{
+	background-color: inherit;
+	color: inherit;
+	border: none;
+	font-weight: 700;
+}

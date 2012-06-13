@@ -1,0 +1,29 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Ajouter un produit au menu "#{addProductToMenu.label}"</h2>
+        
+        <c:choose>
+            <c:when test="#{!empty addProductToMenu.test}">
+                <c:forEach items="#{addProductToMenu.test}" var="p">
+                    <h:outputLabel  value="#{p.label}"/>
+                </c:forEach>
+            </c:when>
+        </c:choose>
+        <h:form>
+            <h:outputLabel for="menu" value="Menu : "/>
+            <h:selectOneMenu id="type" value="#{addProductToMenu.idProduct}" >
+                <c:forEach items="#{addProductToMenu.productList}" var="p">
+                    <f:selectItem  itemLabel="#{p.label}" itemValue="#{p.idProduct}" />
+                </c:forEach>
+            </h:selectOneMenu>
+            <h:commandButton value="OK" action="#{addProductToMenu.AddProductToMenu}" />
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

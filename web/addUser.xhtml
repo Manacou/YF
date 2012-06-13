@@ -1,0 +1,29 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Ajouter un utilisateur</h2>
+        <c:when test="#{empty addUser.loginE}">
+            <div>
+                <h:outputText value="#{addUser.loginE}" />
+            </div>
+        </c:when>
+  
+        <h:form>
+            <h:outputLabel for="firstname" value="Prénom : " class="label"/>
+            <h:inputText id="fisrtname" value="#{addUser.firstname}"/><br />
+            <h:outputLabel for="lastname" value="Nom : " class="label"/>
+            <h:inputText id="lastname" value="#{addUser.lastname}"/><br />
+            <h:outputLabel for="login" value="Login : " class="label"/>
+            <h:inputText id="login" value="#{addUser.login}"/><br />
+            <h:outputLabel for="password" value="Mot de passe : " class="label"/>
+            <h:inputSecret id="password" value="#{addUser.password}"/><br />
+            <h:commandButton value="OK" class="button" action="#{addUser.AddUser}"/>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

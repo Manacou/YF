@@ -1,0 +1,13 @@
+#slideshow #slidesContainer {
+  margin:0 auto;
+  width:560px;
+  height:263px;
+  overflow:auto; /* affiche une scrollbar au cas ou */
+  position:relative;
+}
+
+#slideshow #slidesContainer .slide {
+  margin:0 auto;
+  width:540px;  /* reduit de 20 pixels la div #slidesContainer pour permettre d'afficher la barre de scroll */
+  height:263px;
+}

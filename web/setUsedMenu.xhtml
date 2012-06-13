@@ -1,0 +1,21 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Sélectionner le menu en cours</h2>
+        <h:form>
+            <h:outputLabel for="menu" value="Menu : "/>
+            <h:selectOneMenu id="type" value="#{setUsedMenu.idMenu}" >
+                <c:forEach items="#{setUsedMenu.menus}" var="m">
+                    <f:selectItem  itemLabel="#{m.label}" itemValue="#{m.idMenu}" />
+                </c:forEach>
+            </h:selectOneMenu>
+            <h:commandButton value="OK" action="#{setUsedMenu.SetUsedMenu}" />
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

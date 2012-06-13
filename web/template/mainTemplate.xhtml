@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'/>
+        <link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+        <!--<ui:insert name="additionalCss" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
+        <ui:insert name="additionalJs" />-->
+        <title>You Food</title>
+    </h:head>
+    <h:body>
+<header>
+            <img src="resources/images/youFood.png" alt="YouFoodLogo" />
+            <div id="menu">
+                <ul>
+                    <li><img src="resources/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li>Menu de la semaine</li>
+                    <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                    <li>Nos Restaurants</li>
+                    <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                    <h:form>
+                        <c:choose>
+                            <c:when test="#{!login.statut}">
+                                <li><h:outputLabel for="login" value="Login :" class="label"/></li>
+                                <li><h:inputText id="login" value="#{login.login}"/></li>
+                                <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><h:outputLabel for="password" value="Mot de passe : " class="label"/></li>
+                                <li><h:inputSecret id="password" value="#{login.password}"/></li>
+                                <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><h:commandButton value="OK" class="button" action="#{login.Login}"/></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li> Bonjour <b><h:outputText value="#{login.login}" class="label"/></b></li>
+                                <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><h:commandButton value="Déconnexion" class="button" action="#{logout.Logout}"/></li>
+                            </c:otherwise>
+                        </c:choose>
+                    </h:form>
+                    <li><img src="resources/images/backgrounds/menu_bg_right.png" alt="right" /></li> 
+                </ul>
+            </div>
+        </header>
+
+        <div id="content">
+            <ui:insert name="content" />
+        </div>
+
+    </h:body>
+
+</html>
