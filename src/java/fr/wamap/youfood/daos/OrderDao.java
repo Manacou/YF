@@ -4,15 +4,15 @@
  */
 package fr.wamap.youfood.daos;
 
-import fr.wamap.youfood.entities.Order;
+import fr.wamap.youfood.entities.YFOrder;
 import java.util.List;
 import javax.ejb.Local;
 
 @Local
 public interface OrderDao {
     
-    public void createOrder(Order order);
-    public List<Order> getOrdersbyStatus(int status);
-    public Order updateOrder(Order order);
-    public void deleteOrder(Order order);
+    public void createOrder(YFOrder order);
+    public List<YFOrder> getOrdersbyStatus(int status);
+    public YFOrder updateOrder(YFOrder order);
+    public void deleteOrder(YFOrder order);
 }

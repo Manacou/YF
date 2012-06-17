@@ -28,6 +28,14 @@
                             </f:facet>
                             <h:outputText value="#{p.type}" />
                         </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ajouter à un menu" />
+                            </f:facet>
+                            <h:link value="Ajouter " outcome="addProductToMenu" >
+                                <f:param name="id" value="#{p.idProduct}" />
+                            </h:link>
+                        </h:column>
 </h:dataTable>
     </ui:define>
     

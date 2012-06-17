@@ -2,24 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.wamap.youfood.entities;
+package fr.wamap.youfood.managedbeans;
 
-import java.io.Serializable;
-import java.util.List;
-import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
+import fr.wamap.fr.youfood.services.RestaurantService;
+import fr.wamap.youfood.entities.Restaurant;
+import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 /**
  *
  * @author Kevin
  */
-@Entity
-@XmlRootElement
-public class Restaurant implements Serializable {
-    private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long idRestaurant;
+@ManagedBean
+@RequestScoped
+public class AddRestaurant {
+
+    @EJB
+    RestaurantService rs;
     
     private String number;
     private String street;
@@ -27,31 +27,12 @@ public class Restaurant implements Serializable {
     private String city;
     private String phoneNumber;
 
-    @OneToMany(mappedBy="restaurant")
-    private List<Area> areas;
-
-    public List<Area> getAreas() {
-        return areas;
-    }
-
-    public void setAreas(List<Area> areas) {
-        this.areas = areas;
-    }
-
     public String getCity() {
         return city;
     }
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public Long getIdRestaurant() {
-        return idRestaurant;
-    }
-
-    public void setIdRestaurant(Long idRestaurant) {
-        this.idRestaurant = idRestaurant;
     }
 
     public String getNumber() {
@@ -84,5 +65,18 @@ public class Restaurant implements Serializable {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+    
+    public void AddRestaurant() {
+        
+        Restaurant restaurant = new Restaurant();
+        
+        restaurant.setCity(city);
+        restaurant.setNumber(number);
+        restaurant.setPhoneNumber(phoneNumber);
+        restaurant.setStreet(street);
+        restaurant.setZipCode(zipCode);
+        
+        rs.createRestaurant(restaurant);
     }
 }

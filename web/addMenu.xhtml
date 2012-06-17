@@ -8,6 +8,11 @@
     <ui:define name="content">
         <h2>Ajouter un menu</h2>
         
+        <c:when test="#{!empty addMenu.menuE}">
+            <div>
+                <h:outputText value="#{addMenu.menuE}" />
+            </div>
+        </c:when>
         <h:form>
             <h:outputLabel for="label" value="Intitulé : " class="label"/>
             <h:inputText id="label" value="#{addMenu.label}"/><br />

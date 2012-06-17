@@ -12,6 +12,7 @@ import javax.ejb.Local;
 public interface RestaurantDao {
     
     public void createRestaurant(Restaurant restaurant);
+    public Restaurant getRestaurantById(Long id);
     public List<Restaurant> getAllRestaurants();
     public Restaurant updateRestaurant(Restaurant restaurant);
     public void deleteRestaurant(Restaurant restaurant);

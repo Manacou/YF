@@ -1,0 +1,21 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Ajouter une table à une zone</h2>
+        
+        <h:form>
+            <h:outputLabel value="Zone : "/>
+            <h:inputText value="#{addTable.idArea}" />
+            <h:outputLabel for="nbSeats" value="Nombre de sièges : " />
+            <h:inputText id="nbSeats" value="#{addTable.nbSeats}" />
+            <h:commandButton value="OK" action="#{addTable.AddTable}" />
+        </h:form>
+        <h:outputText value="#{addTable.idRestaurant}" />
+    </ui:define>
+    
+</ui:composition>

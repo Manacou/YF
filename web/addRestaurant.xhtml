@@ -1,0 +1,26 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Ajouter un restaurant</h2>
+
+        <h:form>
+            <h:outputLabel for="number" value="Numéro : " class="label"/>
+            <h:inputText id="number" value="#{addRestaurant.number}"/><br />
+            <h:outputLabel for="street" value="Rue : " class="label"/>
+            <h:inputText id="street" value="#{addRestaurant.street}"/><br />
+            <h:outputLabel for="zipCode" value="Code Postal : " class="label"/>
+            <h:inputText id="zipCode" value="#{addRestaurant.zipCode}"/><br />
+            <h:outputLabel for="city" value="Ville : " class="label"/>
+            <h:inputText id="city" value="#{addRestaurant.city}"/><br />
+            <h:outputLabel for="phoneNumber" value="Téléphone : " class="label"/>
+            <h:inputText id="phoneNumber" value="#{addRestaurant.phoneNumber}"/><br />
+            <h:commandButton value="OK" class="button" action="#{addRestaurant.AddRestaurant}"/>
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

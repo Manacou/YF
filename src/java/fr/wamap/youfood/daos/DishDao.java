@@ -5,7 +5,7 @@
 package fr.wamap.youfood.daos;
 
 import fr.wamap.youfood.entities.Dish;
-import fr.wamap.youfood.entities.Order;
+import fr.wamap.youfood.entities.YFOrder;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -13,6 +13,6 @@ import javax.ejb.Local;
 public interface DishDao {
     
     public void createDish(Dish dish);
-    public List<Dish> getDishesByOrder(Order order);
+    public List<Dish> getDishesByOrder(YFOrder order);
     public void deleteDish(Dish dish);
 }

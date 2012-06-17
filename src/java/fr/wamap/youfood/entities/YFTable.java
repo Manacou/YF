@@ -6,13 +6,15 @@ package fr.wamap.youfood.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Kevin
  */
 @Entity
-public class Table implements Serializable {
+@XmlRootElement
+public class YFTable implements Serializable {
     private static final long serialVersionUID = 1L;
      @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

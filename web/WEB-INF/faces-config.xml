@@ -38,4 +38,28 @@
             <to-view-id>/listProducts.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/addProductToMenu.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ok</from-outcome>
+            <to-view-id>/listProducts.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/addProductToMenu.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>nok</from-outcome>
+            <to-view-id>/addProductToMenu.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/order.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>ordered</from-outcome>
+            <to-view-id>/ordered.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule> 
 </faces-config>

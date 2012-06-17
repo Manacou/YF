@@ -8,12 +8,14 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Kevin
  */
 @Entity
+@XmlRootElement
 public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,13 +33,6 @@ public class User implements Serializable {
     
     @NotNull
     private String lastName;
-    
-    @ManyToOne
-    @JoinColumn(name="userStatus_fk")
-    private UserStatus userStatus;
-    
-    @OneToMany(mappedBy="user")
-    private List<Shift> shifts;
 
     public String getFirstName() {
         return firstName;
@@ -77,21 +72,5 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-    }
-
-   public List<Shift> getShifts() {
-        return shifts;
-    }
-
-    public void setShifts(List<Shift> shifts) {
-        this.shifts = shifts;
     }
 }

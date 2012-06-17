@@ -21,6 +21,11 @@ public class RestaurantService {
         rd.createRestaurant(restaurant);
     }
     
+    public Restaurant getRestaurantById(Long id)
+    {
+        return rd.getRestaurantById(id);
+    }
+    
     public List<Restaurant> getAllRestaurants()
     {
         return rd.getAllRestaurants();

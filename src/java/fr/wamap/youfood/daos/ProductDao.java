@@ -16,6 +16,7 @@ public interface ProductDao {
     public Product getProductById(Long id);
     public List<Product> getProductsByMenu(Menu menu);
     public List<Product> getAllProducts();
+    public List<Product> getProductsByMenuAndByType(Menu menu, Long idType);
     public Product updateProduct(Product product);
     public void deleteProduct(Product product);
 }

@@ -6,10 +6,10 @@ package fr.wamap.fr.youfood.daojpas;
 
 import fr.wamap.youfood.daos.UserDao;
 import fr.wamap.youfood.entities.User;
-import fr.wamap.youfood.entities.UserStatus;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -31,13 +31,14 @@ public class UserDaoJpa implements UserDao{
         Query query = em.createQuery("SELECT u FROM User u WHERE u.login = :login");
         query.setParameter("login", login);
         
-        return (User)query.getSingleResult();
-    }
-
-    @Override
-    public List<User> getUsersByUserStatus(UserStatus userStatus) {
-        
-        return em.find(UserStatus.class, userStatus.getIdUserStatus()).getUsers();
+        try
+        {
+            return (User)query.getSingleResult();
+        }
+        catch(NoResultException e)
+        {
+            return  null;
+        }
     }
 
     @Override

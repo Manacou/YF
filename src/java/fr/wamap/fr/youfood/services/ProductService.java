@@ -37,6 +37,11 @@ public class ProductService {
         return pd.getAllProducts();
     }
     
+    public List<Product> getProductsByMenuAndByType(Menu menu, Long idType)
+    {
+        return pd.getProductsByMenuAndByType(menu, idType);
+    }
+    
     public Product updateProduct(Product product)
     {
         return pd.updateProduct(product);

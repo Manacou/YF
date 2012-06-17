@@ -6,7 +6,7 @@ package fr.wamap.fr.youfood.services;
 
 import fr.wamap.youfood.daos.DishDao;
 import fr.wamap.youfood.entities.Dish;
-import fr.wamap.youfood.entities.Order;
+import fr.wamap.youfood.entities.YFOrder;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,7 +22,7 @@ public class DishService {
         dd.createDish(dish);
     }
     
-    public List<Dish> getDishesByOrder(Order order)
+    public List<Dish> getDishesByOrder(YFOrder order)
     {
         return dd.getDishesByOrder(order);
     }

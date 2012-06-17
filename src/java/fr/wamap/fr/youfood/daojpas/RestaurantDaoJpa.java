@@ -22,6 +22,12 @@ public class RestaurantDaoJpa implements RestaurantDao{
         
         em.merge(restaurant);
     }
+    
+    @Override
+    public Restaurant getRestaurantById(Long id)
+    {
+        return em.find(Restaurant.class,id);
+    }
 
     @Override
     public List<Restaurant> getAllRestaurants() {

@@ -13,6 +13,7 @@ import javax.ejb.Local;
 public interface AreaDao {
     
     public void createArea(Area area);
+    public Area getAreaById(Long id);
     public List<Area> getAreasByRestaurant(Restaurant restaurant);
     public Area updateArea(Area area);
     public void deleteArea(Area area);

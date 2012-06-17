@@ -1,0 +1,35 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        
+        <ui:param name="i" value="1" />
+        Table #{orderMB.idTable}
+        <h:form>
+            <h3>Entrées : </h3>
+            <c:forEach items="#{orderMB.startersList}" var="s">
+                <h:outputLabel value="#{s.label} : " /><h:inputText value="#{orderMB.productQuantities[i]}" />
+                #{orderMB.setProductId(i, s.idProduct)}
+                <c:set var="i" value="#{i +1}" /><br />
+            </c:forEach><br /><br />
+            <h3>Plats : </h3>
+            <c:forEach items="#{orderMB.mainDishesList}" var="s">
+                <h:outputLabel value="#{s.label} : " /><h:inputText value="#{orderMB.productQuantities[i]}" />
+                #{orderMB.setProductId(i, s.idProduct)}
+                <c:set var="i" value="#{i +1}" /><br />
+            </c:forEach><br /><br />
+            <h3>Desserts : </h3>
+            <c:forEach items="#{orderMB.dessertsList}" var="s">
+                <h:outputLabel value="#{s.label} : " /><h:inputText value="#{orderMB.productQuantities[i]}" />
+                #{orderMB.setProductId(i, s.idProduct)}
+                <c:set var="i" value="#{i +1}" /><br />
+            </c:forEach>
+            <h:commandButton value="Valider la commande" action="#{orderMB.addOrder()}" />
+        </h:form>
+    </ui:define>
+    
+</ui:composition>

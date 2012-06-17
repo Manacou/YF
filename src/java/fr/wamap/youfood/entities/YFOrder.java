@@ -7,13 +7,15 @@ package fr.wamap.youfood.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Kevin
  */
 @Entity
-public class Order implements Serializable {
+@XmlRootElement
+public class YFOrder implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,16 +23,10 @@ public class Order implements Serializable {
     
     private int status;
     
-    @OneToMany(mappedBy="order")
-    private List<Dish> dishesList;
-
-    public List<Dish> getDishesList() {
-        return dishesList;
-    }
-
-    public void setDishesList(List<Dish> dishesList) {
-        this.dishesList = dishesList;
-    }
+    @ManyToOne
+    @JoinColumn(name="table_fk")
+    private YFTable table;
+    
     public Long getIdOrder() {
         return idOrder;
     }
@@ -45,5 +41,13 @@ public class Order implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public fr.wamap.youfood.entities.YFTable getTable() {
+        return table;
+    }
+
+    public void setTable(fr.wamap.youfood.entities.YFTable table) {
+        this.table = table;
     }
 }

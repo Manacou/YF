@@ -10,6 +10,7 @@ import fr.wamap.youfood.entities.Product;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -46,6 +47,23 @@ public class ProductDaoJpa implements ProductDao{
     public List<Product> getAllProducts()
     {
        return em.createQuery("SELECT p FROM Product p").getResultList(); 
+    }
+    
+    @Override
+    public List<Product> getProductsByMenuAndByType(Menu menu, Long idType)
+    {
+        try
+        {
+            Query query = em.createQuery("SELECT p FROM Product p WHERE p.menu = :menuId  AND p.type = :idType");
+            query.setParameter("menuId", menu);
+            query.setParameter("idType", idType);
+            
+            return query.getResultList();
+        }
+        catch(NoResultException e)
+        {
+            return null;
+        }
     }
     
     @Override

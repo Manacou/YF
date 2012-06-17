@@ -7,7 +7,7 @@ package fr.wamap.fr.youfood.daojpas;
 import fr.wamap.youfood.daos.TableDao;
 import fr.wamap.youfood.entities.Area;
 import fr.wamap.youfood.entities.Restaurant;
-import fr.wamap.youfood.entities.Table;
+import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -20,23 +20,29 @@ public class TableDaoJpa implements TableDao{
     EntityManager em;
 
     @Override
-    public void createTable(Table table) {
+    public void createTable(YFTable table) {
         
         em.persist(table);
     }
+    
+    @Override
+    public YFTable getTableById(Long id)
+    {
+        return em.find(YFTable.class, id);
+    }
 
     @Override
-    public List<Table> getTablesByArea(Area area) {
+    public List<YFTable> getTablesByArea(Area area) {
         
         return em.find(Area.class, area.getIdArea()).getTables();
     }
 
     @Override
-    public List<Table> getTablesByRestaurant(Restaurant restaurant) {
+    public List<YFTable> getTablesByRestaurant(Restaurant restaurant) {
        
         List<Area> areas = em.find(Restaurant.class, restaurant.getIdRestaurant()).getAreas();
         
-        List<Table> tables = null;
+        List<YFTable> tables = null;
         
         for(int i = 0; i < areas.size(); i++)
         {
@@ -47,13 +53,13 @@ public class TableDaoJpa implements TableDao{
     }
 
     @Override
-    public Table updateTable(Table table) {
+    public YFTable updateTable(YFTable table) {
         
         return em.merge(table);
     }
 
     @Override
-    public void deleteTable(Table table) {
+    public void deleteTable(YFTable table) {
         
         em.remove(table);
     }

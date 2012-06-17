@@ -8,7 +8,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href='http://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'/>
-        <link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+        <link href="res/css/default.css" rel="stylesheet" type="text/css" />
         <!--<ui:insert name="additionalCss" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" />
         <ui:insert name="additionalJs" />-->
@@ -16,18 +16,18 @@
     </h:head>
     <h:body>
 <header>
-            <img src="resources/images/youFood.png" alt="YouFoodLogo" />
+            <img src="res/images/youFood.png" alt="YouFoodLogo" />
             <div id="menu">
                 <ul>
                     
                     <h:form>
                         <c:choose>
                             <c:when test="#{login.statut}">
-                                <li><img src="resources/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                                <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
                                 <li> Bonjour <b><h:outputText value="#{login.login}" class="label"/></b></li>
-                                <li><img src="resources/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
                                 <li><h:commandButton value="Déconnexion" class="button" action="#{logout.Logout()}"/></li>
-                                <li><img src="resources/images/backgrounds/menu_bg_right.png" alt="right" /></li> 
+                                <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li> 
                             </c:when>
                         </c:choose>
                     </h:form>

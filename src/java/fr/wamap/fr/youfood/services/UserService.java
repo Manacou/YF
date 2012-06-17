@@ -6,7 +6,6 @@ package fr.wamap.fr.youfood.services;
 
 import fr.wamap.youfood.daos.UserDao;
 import fr.wamap.youfood.entities.User;
-import fr.wamap.youfood.entities.UserStatus;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -26,12 +25,7 @@ public class UserService {
     {
         return ud.getUserByLogin(login);
     }
-    
-    public List<User> getUsersByUserStatus(UserStatus userStatus)
-    {
-        return ud.getUsersByUserStatus(userStatus);
-    }
-    
+ 
     public List<User> getAllUsers()
     {
         return ud.getAllUsers();

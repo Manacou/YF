@@ -6,16 +6,17 @@ package fr.wamap.youfood.daos;
 
 import fr.wamap.youfood.entities.Area;
 import fr.wamap.youfood.entities.Restaurant;
-import fr.wamap.youfood.entities.Table;
+import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
 import javax.ejb.Local;
 
 @Local
 public interface TableDao {
     
-    public void createTable(Table table);
-    public List<Table> getTablesByArea(Area area);
-    public List<Table> getTablesByRestaurant(Restaurant restaurant);
-    public Table updateTable(Table table);
-    public void deleteTable(Table table);
+    public void createTable(YFTable table);
+    public YFTable getTableById(Long id);
+    public List<YFTable> getTablesByArea(Area area);
+    public List<YFTable> getTablesByRestaurant(Restaurant restaurant);
+    public YFTable updateTable(YFTable table);
+    public void deleteTable(YFTable table);
 }

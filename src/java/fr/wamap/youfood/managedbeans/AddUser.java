@@ -5,9 +5,7 @@
 package fr.wamap.youfood.managedbeans;
 
 import fr.wamap.fr.youfood.services.UserService;
-import fr.wamap.fr.youfood.services.UserStatusService;
 import fr.wamap.youfood.entities.User;
-import fr.wamap.youfood.entities.UserStatus;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -28,9 +26,6 @@ public class AddUser {
     
     @EJB
     private UserService us;
-    
-    @EJB
-    private UserStatusService uss;
 
     public String getFirstname() {
         return firstname;
@@ -81,23 +76,18 @@ public class AddUser {
         user.setFirstName(getFirstname());
         user.setLastName(getLastname());
         
-        List<User> users = us.getAllUsers();
+        User userTest = us.getUserByLogin(getLogin());
         
         
-        if(users.contains(user))
+        if(userTest != null)
         {
             
-            this.setLoginE("Bad Login.");
+            this.setLoginE("L'utilisateur existe déjà.");
             return "addUserFail";
           
         }
         else
          {
-             UserStatus status = new UserStatus();
-             status.setLabel("Administrateur");
-             
-             user.setUserStatus(status);
-             
              us.createUser(user);
              
              return "addUserSucess";

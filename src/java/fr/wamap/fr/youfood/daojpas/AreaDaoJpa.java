@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class AreaDaoJpa implements AreaDao{
@@ -23,11 +24,20 @@ public class AreaDaoJpa implements AreaDao{
         
         em.persist(area);
     }
+    
+    @Override
+    public Area getAreaById(Long id)
+    {
+        return em.find(Area.class, id);
+    }
 
     @Override
     public List<Area> getAreasByRestaurant(Restaurant restaurant) {
         
-        return em.find(Restaurant.class, restaurant.getIdRestaurant()).getAreas();
+        Query query = em.createQuery("SELECT a FROM Area a WHERE a.restaurant = :restaurantId ");
+        query.setParameter("restaurantId", restaurant);
+        
+        return query.getResultList();
     }
 
     @Override

@@ -22,6 +22,10 @@ public class AreaService {
         ad.createArea(area);
     }
     
+    public Area getAreaById(Long id)
+    {
+        return ad.getAreaById(id);
+    }
     public List<Area> getAreasByRestaurant(Restaurant restaurant)
     {
         return ad.getAreasByRestaurant(restaurant);

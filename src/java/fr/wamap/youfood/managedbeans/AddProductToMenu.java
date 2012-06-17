@@ -32,39 +32,43 @@ public class AddProductToMenu {
     private HttpServletRequest request=(HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
     
     private String label;
-    private List<Product> productList;
-    private Long idMenu;
+    private List<Menu> menuList;
     private Long idProduct;
+    private Long idMenu;
 
     public String getLabel() {
 
         
-        if (idMenu == null)
+        if (idProduct == null)
         {
-            setIdMenu(Long.decode(request.getParameter("id")));
+            setIdProduct(Long.decode(request.getParameter("id")));
         }
         
-        Menu menu = ms.getMenuById(getIdMenu());
-        
+        Product product = ps.getProductById(getIdProduct());
        
-        return menu.getLabel();
-        
+        return product.getLabel();
     }
 
     public void setLabel(String idMenu) {
         this.label = idMenu;
     }
 
-    public List<Product> getProductList() {
+    public List<Menu> getMenuList() {
         
-        return ps.getAllProducts();
+        return ms.getAllMenus();
     }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
+    public void setMenuList(List<Menu> menuList) {
+        this.menuList = menuList;
     }
 
     public Long getIdMenu() {
+        
+        if (idMenu == null)
+        {
+           idMenu = Long.decode(request.getParameter("id"));
+        }
+        
         return idMenu;
     }
 
@@ -80,15 +84,23 @@ public class AddProductToMenu {
         this.idProduct = idProduct;
     }
     
-    public void AddProductToMenu() {
+    public String AddProductToMenu() {
         
-        Product product = ps.getProductById(getIdProduct());
+        try
+        {
+            Product product = ps.getProductById(getIdProduct());
         
-        Menu menu = ms.getMenuById(getIdMenu());
+            Menu menu = ms.getMenuById(getIdMenu());
         
-        product.setMenu(menu);
+            product.setMenu(menu);
         
-        
-        ps.updateProduct(product);
+            ps.updateProduct(product);
+            
+            return "ok";
+        }
+        catch(Exception e)
+        {
+            return "nok";
+        }
     }
 }

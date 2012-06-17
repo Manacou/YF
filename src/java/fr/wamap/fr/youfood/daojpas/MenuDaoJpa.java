@@ -9,6 +9,7 @@ import fr.wamap.youfood.entities.Menu;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -35,7 +36,14 @@ public class MenuDaoJpa implements MenuDao{
         Query query = em.createQuery("SELECT m FROM Menu m WHERE m.label = :label");
         query.setParameter("label", label);
         
-        return (Menu)query.getSingleResult();
+        try
+        {
+            return (Menu)query.getSingleResult();
+        }
+        catch(NoResultException e)
+        {
+            return  null;
+        }
     }
     
     @Override

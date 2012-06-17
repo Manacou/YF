@@ -22,6 +22,8 @@ public class AddMenu {
     private MenuService ms;
     
     private String label;
+    
+    private String menuE;
 
     public String getLabel() {
         return label;
@@ -30,6 +32,14 @@ public class AddMenu {
     public void setLabel(String label) {
         this.label = label;
     }
+
+    public String getMenuE() {
+        return menuE;
+    }
+
+    public void setMenuE(String menuE) {
+        this.menuE = menuE;
+    }
     
     public void AddMenu() {
         
@@ -37,6 +47,18 @@ public class AddMenu {
         
         menu.setLabel(getLabel());
         
-        ms.createMenu(menu);
+        Menu menuTest = ms.getMenuByLabel(getLabel());
+        
+        if(menuTest != null)
+        {
+            
+            this.setMenuE("Le menu existe déjà.");
+          
+        }
+        else
+         {
+             ms.createMenu(menu);
+         }
+
     }
 }

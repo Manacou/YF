@@ -7,12 +7,14 @@ package fr.wamap.youfood.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Kevin
  */
 @Entity
+@XmlRootElement
 public class Area implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,7 +25,7 @@ public class Area implements Serializable {
     private Restaurant restaurant;
     
     @OneToMany(mappedBy="area")
-    private List<Table> tables;
+    private List<YFTable> tables;
 
     public Long getIdArea() {
         return idArea;
@@ -41,11 +43,11 @@ public class Area implements Serializable {
         this.restaurant = restaurant;
     }
 
-    public List<fr.wamap.youfood.entities.Table> getTables() {
+    public List<fr.wamap.youfood.entities.YFTable> getTables() {
         return tables;
     }
 
-    public void setTables(List<fr.wamap.youfood.entities.Table> tables) {
+    public void setTables(List<fr.wamap.youfood.entities.YFTable> tables) {
         this.tables = tables;
     }
 }

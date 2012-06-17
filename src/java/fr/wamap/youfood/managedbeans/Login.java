@@ -6,17 +6,19 @@ package fr.wamap.youfood.managedbeans;
  */
 
 
+import fr.wamap.youfood.daos.UserDao;
+import fr.wamap.youfood.entities.User;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-/**
- *
- * @author Kevin
- */
 @ManagedBean
 @SessionScoped
 public class Login {
 
+    @EJB
+    private UserDao userDao;
+    
     private String login;
     private String password;
     private boolean statut;
@@ -46,15 +48,26 @@ public class Login {
     }
     
     public String Login() {
-        if(getLogin().equals("Tzoreol") && getPassword().equals("reunion"))
+        
+        User user = userDao.getUserByLogin(login);
+        
+        if (user != null)
         {
-            setStatut(true);
-           return "test";
+            if(user.getPassword().equals(password))
+            {
+                setStatut(true);
+                return "test";
+            }
+            else
+            {
+                setStatut(false);
+                return "test";
+            }
         }
         else
         {
             setStatut(false);
-            return "test";
+            return "false";
         }
     }
 }

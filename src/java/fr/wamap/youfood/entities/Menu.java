@@ -7,12 +7,14 @@ package fr.wamap.youfood.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author Kevin
  */
 @Entity
+@XmlRootElement
 public class Menu implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

@@ -7,7 +7,7 @@ package fr.wamap.fr.youfood.services;
 import fr.wamap.youfood.daos.TableDao;
 import fr.wamap.youfood.entities.Area;
 import fr.wamap.youfood.entities.Restaurant;
-import fr.wamap.youfood.entities.Table;
+import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -18,27 +18,32 @@ public class TableService {
     @EJB
     TableDao td;
     
-    public void createTable(Table table)
+    public void createTable(YFTable table)
     {
         td.createTable(table);
     }
     
-    public List<Table> getTablesByArea(Area area)
+    public YFTable getTableById(Long id)
+    {
+        return td.getTableById(id);
+    }
+    
+    public List<YFTable> getTablesByArea(Area area)
     {
         return td.getTablesByArea(area);
     }
     
-    public List<Table> getTablesByRestaurant(Restaurant restaurant)
+    public List<YFTable> getTablesByRestaurant(Restaurant restaurant)
     {
         return td.getTablesByRestaurant(restaurant);
     }
     
-    public Table updateTable(Table table)
+    public YFTable updateTable(YFTable table)
     {
         return td.updateTable(table);
     }
     
-    public void deleteTable(Table table)
+    public void deleteTable(YFTable table)
     {
         td.deleteTable(table);
     }
