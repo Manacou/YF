@@ -50,12 +50,16 @@ public class UserDaoJpa implements UserDao{
     @Override
     public User updateUser(User user) {
         
-        return em.merge(user);
+        em.getTransaction().begin();
+        User u = em.merge(user);
+        em.getTransaction().commit();
+        
+        return u;
     }
 
     @Override
     public void deleteUser(User user) {
         
-        em.remove(user);
+        em.persist(user);
     }
 }

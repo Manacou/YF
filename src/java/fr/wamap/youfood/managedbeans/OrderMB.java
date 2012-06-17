@@ -63,12 +63,7 @@ public class OrderMB {
     }
 
     public Long[] getProductQuantities() {
-     
-       /* for(int i = 0; i < 100; i++)
-        {
-            this.productQuantities[i] = Long.decode("0");
-        }*/
-        
+       
         return productQuantities;
     }
 

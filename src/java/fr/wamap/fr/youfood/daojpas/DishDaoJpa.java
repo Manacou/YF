@@ -11,6 +11,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 @Stateless
 public class DishDaoJpa implements DishDao{
@@ -27,7 +28,11 @@ public class DishDaoJpa implements DishDao{
     @Override
     public List<Dish> getDishesByOrder(YFOrder order) {
         
-        return em.createQuery("SELECT d FROM Dish d").getResultList();//em.find(Order.class, order.getIdOrder()).getDishesList();
+        Query query = em.createQuery("SELECT d FROM Dish d WHERE d.order = :order");
+        query.setParameter("order", order);
+        
+        
+        return query.getResultList();
     }
 
     @Override

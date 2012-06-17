@@ -1,0 +1,39 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Commandes</h2>
+        <h:dataTable value="#{listOrder.ordersDM}" var="o">
+                        <h:column>
+                            <!-- Les facets header sont l'entete du tableau -->
+                            <f:facet name="header">
+                                <h:outputText value="ID" />
+                            </f:facet>
+                            <!-- On mets chaque valeur des propriétés des utilisateurs -->
+                            <h:outputText value="#{o.idOrder}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Détails" />
+                            </f:facet>
+                            <h:link value="Détails" outcome="detailOrder" >
+                                <f:param name="id" value="#{o.idOrder}" />
+                            </h:link>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Prête" />
+                            </f:facet>
+                            <h:form>
+                                <h:commandButton value="Prête" action="#{listOrder.setReady(o)}" />
+                            </h:form>
+                        </h:column>
+            
+</h:dataTable>
+    </ui:define>
+    
+</ui:composition>

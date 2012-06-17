@@ -1,0 +1,29 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <h2>Produits</h2>
+        <h:dataTable value="#{detailOrder.dishesList}" var="d">
+                        <h:column>
+                            <!-- Les facets header sont l'entete du tableau -->
+                            <f:facet name="header">
+                                <h:outputText value="Produit" />
+                            </f:facet>
+                            <!-- On mets chaque valeur des propriétés des utilisateurs -->
+                            <h:outputText value="#{d.product.label}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Quantité" />
+                            </f:facet>
+                            <h:outputText value="#{d.quantity}" />
+                        </h:column>
+</h:dataTable>
+        <h:link value="Retour" outcome="listOrders" />
+    </ui:define>
+    
+</ui:composition>

@@ -5,6 +5,7 @@
 package fr.wamap.youfood.daos;
 
 import fr.wamap.youfood.entities.YFOrder;
+import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -12,7 +13,11 @@ import javax.ejb.Local;
 public interface OrderDao {
     
     public void createOrder(YFOrder order);
+    public YFOrder getOrderById(Long idOrder);
     public List<YFOrder> getOrdersbyStatus(int status);
+    public YFOrder getReadyOrderByTable(YFTable table);
+    public void setDelivered(YFOrder Order);
+    public void setReady(YFOrder Order);
     public YFOrder updateOrder(YFOrder order);
     public void deleteOrder(YFOrder order);
 }
