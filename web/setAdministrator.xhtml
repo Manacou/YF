@@ -1,0 +1,33 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{(login.statut == 2)}" >
+                <h:form>
+                    <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:outputText value="Passer #{setAdministrator.login} en administrateur ? " /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+                <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                            <li><h:commandLink value="Oui" action="#{setAdministrator.setAdministrator}" /></li>
+                            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                            <li><h:link value="Non" outcome="listUsers" /></li>
+                            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+    
+</ui:composition>

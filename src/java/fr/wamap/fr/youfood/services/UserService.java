@@ -21,6 +21,11 @@ public class UserService {
         ud.createUser(user);
     }
     
+    public User getUserById(Long id)
+    {
+        return ud.getUserById(id);
+    }
+    
     public User getUserByLogin(String login)
     {
         return ud.getUserByLogin(login);
@@ -31,9 +36,9 @@ public class UserService {
         return ud.getAllUsers();
     }
     
-    public User updateUser(User user)
+    public void updateUser(User user)
     {
-        return ud.updateUser(user);
+        ud.updateUser(user);
     }
     
     public void deleteUser(User user)

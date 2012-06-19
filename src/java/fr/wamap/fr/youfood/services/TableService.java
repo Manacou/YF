@@ -5,7 +5,6 @@
 package fr.wamap.fr.youfood.services;
 
 import fr.wamap.youfood.daos.TableDao;
-import fr.wamap.youfood.entities.Area;
 import fr.wamap.youfood.entities.Restaurant;
 import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
@@ -26,11 +25,6 @@ public class TableService {
     public YFTable getTableById(Long id)
     {
         return td.getTableById(id);
-    }
-    
-    public List<YFTable> getTablesByArea(Area area)
-    {
-        return td.getTablesByArea(area);
     }
     
     public List<YFTable> getTablesByRestaurant(Restaurant restaurant)

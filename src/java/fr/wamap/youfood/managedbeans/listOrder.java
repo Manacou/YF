@@ -37,4 +37,9 @@ public class listOrder {
     {
         os.setReady(order);
     }
+    
+    public void onCook(YFOrder order)
+    {
+        os.setOnCook(order);
+    }
 }

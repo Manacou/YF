@@ -26,10 +26,10 @@ public class Restaurant implements Serializable {
     private String zipCode;
     private String city;
     private String phoneNumber;
-
+    
     @OneToMany(mappedBy="restaurant")
     private List<Area> areas;
-
+    
     public List<Area> getAreas() {
         return areas;
     }

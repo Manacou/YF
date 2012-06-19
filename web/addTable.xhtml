@@ -6,16 +6,32 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Ajouter une table à une zone</h2>
         
         <h:form>
-            <h:outputLabel value="Zone : "/>
-            <h:inputText value="#{addTable.idArea}" />
-            <h:outputLabel for="nbSeats" value="Nombre de sièges : " />
-            <h:inputText id="nbSeats" value="#{addTable.nbSeats}" />
-            <h:commandButton value="OK" action="#{addTable.AddTable}" />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel value="Zone : "/></li>
+            <li><h:inputText value="#{addTable.idArea}" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="nbSeats" value="Nombre de sièges : " /></li>
+            <li><h:inputText id="nbSeats" value="#{addTable.nbSeats}" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandLink value="OK" action="#{addTable.AddTable}" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
         </h:form>
-        <h:outputText value="#{addTable.idRestaurant}" />
+        </c:when>
+        <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

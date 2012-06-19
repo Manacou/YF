@@ -6,13 +6,21 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Ajouter un produit</h2>
         
         <h:form>
-            <h:outputLabel for="label" value="Intitulé : " class="label"/>
-            <h:inputText id="label" value="#{addProduct.label}"/><br />
-            <h:outputLabel for="price" value="Prix : " />
-            <h:inputText id="price" value="#{addProduct.price}">
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="label" value="Intitulé : " class="label"/></li>
+            <li><h:inputText id="label" value="#{addProduct.label}"/><br /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="price" value="Prix : " /></li>
+            <li><h:inputText id="price" value="#{addProduct.price}">
                     <f:convertNumber 
                         type="currency"
                         groupingUsed="true"
@@ -20,15 +28,28 @@
                         currencySymbol="€"
                         maxIntegerDigits="5"
                         maxFractionDigits="2"/>
-            </h:inputText>
-            <h:outputLabel for="type" value="Type : " />
-            <h:selectOneMenu id="type" value="#{addProduct.type}" >
+                </h:inputText></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="type" value="Type : " /></li>
+            <li><h:selectOneMenu id="type" value="#{addProduct.type}" >
                 <f:selectItem  itemLabel="Entrée" itemValue="1" />
                 <f:selectItem itemLabel="Plat" itemValue="2" />
                 <f:selectItem itemLabel="Dessert" itemValue="3" />
-            </h:selectOneMenu>
-            <h:commandButton value="OK" class="button" action="#{addProduct.AddProduct}"/>
+                </h:selectOneMenu></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandLink value="OK" class="button" action="#{addProduct.AddProduct}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
         </h:form>
+        </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

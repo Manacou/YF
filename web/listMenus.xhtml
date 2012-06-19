@@ -1,0 +1,36 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{(login.statut == 2)}" >
+                <h2>Liste des menus</h2>
+                <h:dataTable value="#{listMenus.listMenus}" var="m">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Intitulé" />
+                        </f:facet>
+                        <h:outputText value="#{m.label}" />
+                    </h:column>
+                    <h:column>
+                        <h:commandLink value="Passer en actuel" action="#{setUsedMenu.setUsedMenu(m)}" />
+                    </h:column>
+                    <h:column>
+                        <h:link value="Liste des produits du menu" outcome="listProductsByMenu" >
+                            <f:param name="id" value="#{m.idMenu}" />
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
+            </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+    
+</ui:composition>

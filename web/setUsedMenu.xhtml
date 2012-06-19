@@ -6,16 +6,29 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Sélectionner le menu en cours</h2>
         <h:form>
-            <h:outputLabel for="menu" value="Menu : "/>
-            <h:selectOneMenu id="type" value="#{setUsedMenu.idMenu}" >
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="menu" value="Menu : "/></li>
+            <li><h:selectOneMenu id="type" value="#{setUsedMenu.idMenu}" >
                 <c:forEach items="#{setUsedMenu.menus}" var="m">
                     <f:selectItem  itemLabel="#{m.label}" itemValue="#{m.idMenu}" />
                 </c:forEach>
-            </h:selectOneMenu>
-            <h:commandButton value="OK" action="#{setUsedMenu.SetUsedMenu}" />
+                </h:selectOneMenu></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandButton value="OK" action="#{setUsedMenu.SetUsedMenu}" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
         </h:form>
+        </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

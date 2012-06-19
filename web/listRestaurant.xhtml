@@ -1,0 +1,25 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/mainTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+                <h2>Liste des restaurants</h2>
+                <h:dataTable value="#{listRestaurant.listRestaurants}" var="r">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Ville" />
+                        </f:facet>
+                        <h:outputText value="#{r.city}" />
+                    </h:column>
+                    <h:column>
+                        <h:link value="Détails" outcome="restaurantDetail" >
+                            <f:param name="id" value="#{r.idRestaurant}" />
+                        </h:link>
+                    </h:column>
+                </h:dataTable>
+    </ui:define>
+    
+</ui:composition>

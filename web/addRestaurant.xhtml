@@ -6,21 +6,50 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Ajouter un restaurant</h2>
 
         <h:form>
-            <h:outputLabel for="number" value="Numéro : " class="label"/>
-            <h:inputText id="number" value="#{addRestaurant.number}"/><br />
-            <h:outputLabel for="street" value="Rue : " class="label"/>
-            <h:inputText id="street" value="#{addRestaurant.street}"/><br />
-            <h:outputLabel for="zipCode" value="Code Postal : " class="label"/>
-            <h:inputText id="zipCode" value="#{addRestaurant.zipCode}"/><br />
-            <h:outputLabel for="city" value="Ville : " class="label"/>
-            <h:inputText id="city" value="#{addRestaurant.city}"/><br />
-            <h:outputLabel for="phoneNumber" value="Téléphone : " class="label"/>
-            <h:inputText id="phoneNumber" value="#{addRestaurant.phoneNumber}"/><br />
-            <h:commandButton value="OK" class="button" action="#{addRestaurant.AddRestaurant}"/>
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="number" value="Numéro : " class="label"/></li>
+            <li><h:inputText id="number" value="#{addRestaurant.number}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+           <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="street" value="Rue : " class="label"/></li>
+            <li><h:inputText id="street" value="#{addRestaurant.street}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="zipCode" value="Code Postal : " class="label"/></li>
+            <li><h:inputText id="zipCode" value="#{addRestaurant.zipCode}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="city" value="Ville : " class="label"/></li>
+            <li><h:inputText id="city" value="#{addRestaurant.city}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="phoneNumber" value="Téléphone : " class="label"/></li>
+            <li><h:inputText id="phoneNumber" value="#{addRestaurant.phoneNumber}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandLink value="OK" class="button" action="#{addRestaurant.AddRestaurant}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
         </h:form>
+        </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

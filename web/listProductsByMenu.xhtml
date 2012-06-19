@@ -8,35 +8,38 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{(login.statut == 2)}" >
-        <meta http-equiv="refresh" content="30;url=http://localhost:8080/YouFood/youfood/listOrders.xhtml" />
-        <h2>Commandes</h2>
-        <h:dataTable value="#{listOrder.ordersDM}" var="o">
+        <h2>Produits</h2>
+        <h:dataTable value="#{listProductByMenu.listProducts}" var="p">
                         <h:column>
                             <!-- Les facets header sont l'entete du tableau -->
                             <f:facet name="header">
-                                <h:outputText value="ID" />
+                                <h:outputText value="Intitulé" />
                             </f:facet>
                             <!-- On mets chaque valeur des propriétés des utilisateurs -->
-                            <h:outputText value="#{o.idOrder}" />
+                            <h:outputText value="#{p.label}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Détails" />
+                                <h:outputText value="Prix" />
                             </f:facet>
-                            <h:link value="Détails" outcome="detailOrder" >
-                                <f:param name="id" value="#{o.idOrder}" />
+                            <h:outputText value="#{p.price}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Type" />
+                            </f:facet>
+                            <h:outputText value="#{p.type}" />
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ajouter à un menu" />
+                            </f:facet>
+                            <h:link value="Ajouter " outcome="addProductToMenu" >
+                                <f:param name="id" value="#{p.idProduct}" />
                             </h:link>
                         </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Prête" />
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton value="Prête" action="#{listOrder.setReady(o)}" />
-                            </h:form>
-                        </h:column>
 </h:dataTable>
-            </c:when>
+        </c:when>
             <c:otherwise>
                 <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
                 Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes

@@ -15,8 +15,8 @@ public interface TableDao {
     
     public void createTable(YFTable table);
     public YFTable getTableById(Long id);
-    public List<YFTable> getTablesByArea(Area area);
     public List<YFTable> getTablesByRestaurant(Restaurant restaurant);
+    public List<YFTable> getTablesByArea(Area area);
     public YFTable updateTable(YFTable table);
     public void deleteTable(YFTable table);
 }

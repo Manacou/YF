@@ -9,6 +9,10 @@ import fr.wamap.youfood.entities.Restaurant;
 import java.util.List;
 import javax.ejb.Local;
 
+/**
+ *
+ * @author Kevin
+ */
 @Local
 public interface AreaDao {
     

@@ -1,0 +1,53 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/mainTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        
+        <h:outputText value="Menu #{menuDetail.menu.label}" />
+            <h3>Entrées : </h3>
+            <c:forEach items="#{menuDetail.starters}" var="s">
+                <h:outputText value="#{s.label}" />
+                <h:outputText id="sprice" value="#{s.price}">
+                    <f:convertNumber 
+                        type="currency"
+                        groupingUsed="true"
+                        currencyCode="EUR"
+                        currencySymbol="€"
+                        maxIntegerDigits="5"
+                        maxFractionDigits="2"/>
+                </h:outputText><br/>
+            </c:forEach><br /><br />
+            <h3>Plats : </h3>
+            <c:forEach items="#{menuDetail.mainDishes}" var="m">
+                <h:outputText value="#{m.label}" />
+                <h:outputText id="mprice" value="#{m.price}">
+                    <f:convertNumber 
+                        type="currency"
+                        groupingUsed="true"
+                        currencyCode="EUR"
+                        currencySymbol="€"
+                        maxIntegerDigits="5"
+                        maxFractionDigits="2"/>
+                </h:outputText><br />
+            </c:forEach><br /><br />
+            <h3>Desserts : </h3>
+            <c:forEach items="#{menuDetail.desserts}" var="d">
+                <h:outputText value="#{d.label}" />
+                <h:outputText id="dprice" value="#{d.price}">
+                    <f:convertNumber 
+                        type="currency"
+                        groupingUsed="true"
+                        currencyCode="EUR"
+                        currencySymbol="€"
+                        maxIntegerDigits="5"
+                        maxFractionDigits="2"/>
+                </h:outputText><br />
+            </c:forEach><br /><br />
+    </ui:define>
+    
+</ui:composition>
+

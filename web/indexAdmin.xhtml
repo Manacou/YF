@@ -4,11 +4,38 @@
     template="template/adminTemplate.xhtml"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
     xmlns:f="http://java.sun.com/jsf/core">
-    <ui:define name="additionalCss">
-        <link href="res/css/slideshow.css" rel="stylesheet" type="text/css"/>
-    </ui:define>
+   
     <ui:define name="content">
-Vous n'avez accès à cette page.
+        <h:link value="Lister les commandes" outcome="listOrdersByRestaurant" >
+            <f:param name="idRestaurant" value="#{login.idRestaurant}" />
+        </h:link><br />
+        <c:choose>
+            <c:when test="#{(login.statut == 2)}" >
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:link value="Ajouter un utilisateur" outcome="addUser" /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>   
+                    <li><h:link value="Lister les utilisateurs" outcome="listUsers" /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul>
+                <h:link value="Ajouter un restaurant" outcome="addRestaurant" /><br />
+                <h:link value="Lister les restaurants" outcome="listRestaurant" /><br />
+                <h:link value="Ajouter un menu" outcome="addMenu" /><br />
+                <h:link value="Lister les menus" outcome="listMenus" /><br />
+                <h:link value="Ajouter un produit" outcome="addProduct" /><br />
+                <h:link value="Lister les produits" outcome="listProducts" /><br />
+                <h:link value="Lister les produits commandés" outcome="listDishes" /><br />
+                <h:link value="Lister les commandes" outcome="listOrders" /><br />
+                
+            </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

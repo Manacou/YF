@@ -24,6 +24,12 @@ public class UserDaoJpa implements UserDao{
         
         em.persist(user);
     }
+    
+    @Override
+    public User getUserById(Long id)
+    {
+        return em.find(User.class, id);
+    }
 
     @Override
     public User getUserByLogin(String login) {
@@ -48,18 +54,15 @@ public class UserDaoJpa implements UserDao{
     }
 
     @Override
-    public User updateUser(User user) {
+    public void updateUser(User user) {
         
-        em.getTransaction().begin();
-        User u = em.merge(user);
-        em.getTransaction().commit();
         
-        return u;
+       em.merge(user);
     }
 
     @Override
     public void deleteUser(User user) {
         
-        em.persist(user);
+        em.remove(user);
     }
 }

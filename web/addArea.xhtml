@@ -3,20 +3,33 @@
     xmlns:h="http://java.sun.com/jsf/html"
     template="template/adminTemplate.xhtml"
     xmlns:c="http://java.sun.com/jsp/jstl/core"
-    xmlns:f="http://java.sun.com/jsf/core">
+    xmlns:f="http://java.sun.com/jsf/core"><ul>
    
     <ui:define name="content">
+         <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Ajouter une zone à un restaurant</h2>
         
         <h:form>
-            <h:outputLabel for="menu" value="Restaurant : "/>
-            <h:selectOneMenu id="menu" value="#{addArea.idRestaurant}" >
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="menu" value="Restaurant : "/></li>
+            <li><h:selectOneMenu id="menu" value="#{addArea.idRestaurant}" >
                 <c:forEach items="#{addArea.listRestaurants}" var="r">
                     <f:selectItem  itemLabel="#{r.city}" itemValue="#{r.idRestaurant}" />
                 </c:forEach>
-            </h:selectOneMenu>
-            <h:commandButton value="OK" action="#{addArea.AddArea}" />
+                </h:selectOneMenu></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandLink value="OK" action="#{addArea.AddArea}" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
         </h:form>
+                    </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

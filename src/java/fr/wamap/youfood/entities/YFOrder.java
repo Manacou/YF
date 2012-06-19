@@ -27,6 +27,10 @@ public class YFOrder implements Serializable {
     @JoinColumn(name="table_fk")
     private YFTable table;
     
+    @ManyToOne
+    @JoinColumn(name="restaurant_fk")
+    private Restaurant restaurant;
+    
     public Long getIdOrder() {
         return idOrder;
     }
@@ -49,5 +53,13 @@ public class YFOrder implements Serializable {
 
     public void setTable(fr.wamap.youfood.entities.YFTable table) {
         this.table = table;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }

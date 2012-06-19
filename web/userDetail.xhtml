@@ -1,0 +1,39 @@
+<ui:composition
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    template="template/adminTemplate.xhtml"
+    xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:f="http://java.sun.com/jsf/core">
+   
+    <ui:define name="content">
+        <c:choose>
+            <c:when test="#{(login.statut == 2)}" >
+                <h2>Detail de #{userDetail.user.login}</h2>
+                <strong><h:outputText value="Prénom : " /></strong><h:outputText value="#{userDetail.user.firstName}" /><br />
+                <strong><h:outputText value="Nom : " /></strong><h:outputText value="#{userDetail.user.lastName}" /><br />
+                <strong><h:outputText value="Statut : " /></strong>
+                <c:choose>
+                    <c:when test="#{userDetail.user.idStatus == 0}">
+                        <h:outputText value="Désactivé" /><br />
+                    </c:when>
+                    <c:when test="#{userDetail.user.idStatus == 1}">
+                        <h:outputText value="Utilisateur" /><br />
+                    </c:when>
+                    <c:when test="#{userDetail.user.idStatus == 2}">
+                        <h:outputText value="Administrateur" /><br />
+                    </c:when>
+                </c:choose>
+                <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:link value="Retour" outcome="listUsers" /></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
+            </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+    
+</ui:composition>

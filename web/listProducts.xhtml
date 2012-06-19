@@ -6,6 +6,8 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{(login.statut == 2)}" >
         <h2>Produits</h2>
         <h:dataTable value="#{listProduct.productsDM}" var="p">
                         <h:column>
@@ -37,6 +39,12 @@
                             </h:link>
                         </h:column>
 </h:dataTable>
+        </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

@@ -20,13 +20,13 @@
             <div id="menu">
                 <ul>
                     <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
-                    <li>Menu de la semaine</li>
+                    <li><h:link value="Menu de la semaine" outcome="menuDetail" /></li>
                     <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
-                    <li>Nos Restaurants</li>
+                    <li><h:link value="Nos Restaurants" outcome="listRestaurant" /></li>
                     <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
                     <h:form>
                         <c:choose>
-                            <c:when test="#{!login.statut}">
+                            <c:when test="#{(login.statut != 1) and (login.statut != 2)}">
                                 <li><h:outputLabel for="login" value="Login :" class="label"/></li>
                                 <li><h:inputText id="login" value="#{login.login}"/></li>
                                 <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
@@ -39,6 +39,8 @@
                                 <li> Bonjour <b><h:outputText value="#{login.login}" class="label"/></b></li>
                                 <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
                                 <li><h:commandButton value="Déconnexion" class="button" action="#{logout.Logout}"/></li>
+                                <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><h:link value="Administration" outcome="indexAdmin"/></li>
                             </c:otherwise>
                         </c:choose>
                     </h:form>

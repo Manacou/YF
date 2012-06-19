@@ -22,12 +22,14 @@
                     
                     <h:form>
                         <c:choose>
-                            <c:when test="#{login.statut}">
+                            <c:when test="#{(login.statut== 1) or (login.statut == 2)}">
                                 <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
                                 <li> Bonjour <b><h:outputText value="#{login.login}" class="label"/></b></li>
                                 <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
                                 <li><h:commandButton value="Déconnexion" class="button" action="#{logout.Logout()}"/></li>
-                                <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li> 
+                                <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                                <li><h:link value="Administration" outcome="indexAdmin"/></li>
+                                <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
                             </c:when>
                         </c:choose>
                     </h:form>
@@ -37,7 +39,15 @@
         </header>
 
         <div id="content">
-            <ui:insert name="content" />
+            <c:choose>
+                <c:when test="#{(login.statut== 1) or (login.statut == 2)}">
+                    <ui:insert name="content" />
+                </c:when>
+                <c:otherwise>
+                    <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                    Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+                </c:otherwise>
+            </c:choose>
         </div>
 
     </h:body>

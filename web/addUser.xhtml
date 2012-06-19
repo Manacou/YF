@@ -6,24 +6,49 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
-        <h2>Ajouter un utilisateur</h2>
-        <c:when test="#{empty addUser.loginE}">
-            <div>
-                <h:outputText value="#{addUser.loginE}" />
-            </div>
-        </c:when>
-  
-        <h:form>
-            <h:outputLabel for="firstname" value="Prénom : " class="label"/>
-            <h:inputText id="fisrtname" value="#{addUser.firstname}"/><br />
-            <h:outputLabel for="lastname" value="Nom : " class="label"/>
-            <h:inputText id="lastname" value="#{addUser.lastname}"/><br />
-            <h:outputLabel for="login" value="Login : " class="label"/>
-            <h:inputText id="login" value="#{addUser.login}"/><br />
-            <h:outputLabel for="password" value="Mot de passe : " class="label"/>
-            <h:inputSecret id="password" value="#{addUser.password}"/><br />
-            <h:commandButton value="OK" class="button" action="#{addUser.AddUser}"/>
-        </h:form>
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
+                <h2>Ajouter un utilisateur</h2>
+                <c:when test="#{empty addUser.loginE}">
+                    <div>
+                        <h:outputText value="#{addUser.loginE}" />
+                    </div>
+                </c:when>
+
+                <h:form>
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:outputLabel for="firstname" value="Prénom : " class="label"/></li>
+                    <li><h:inputText id="fisrtname" value="#{addUser.firstname}"/><br /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:outputLabel for="lastname" value="Nom : " class="label"/></li>
+                    <li><h:inputText id="lastname" value="#{addUser.lastname}"/><br /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:outputLabel for="login" value="Login : " class="label"/></li>
+                    <li><h:inputText id="login" value="#{addUser.login}"/><br /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+                <ul>
+                    <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+                    <li><h:outputLabel for="password" value="Mot de passe : " class="label"/></li>
+                    <li><h:inputSecret id="password" value="#{addUser.password}"/><br /></li>
+                    <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+                    <li><h:commandLink value="OK" class="button" action="#{addUser.AddUser}"/></li>
+                    <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+                </ul><br />
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

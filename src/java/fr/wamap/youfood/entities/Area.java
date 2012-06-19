@@ -9,17 +9,15 @@ import java.util.List;
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Kevin
- */
+
 @Entity
 @XmlRootElement
 public class Area implements Serializable {
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idArea;
-
+    
     @ManyToOne
     @JoinColumn(name="restaurant_fk")
     private Restaurant restaurant;
@@ -35,6 +33,8 @@ public class Area implements Serializable {
         this.idArea = idArea;
     }
 
+    
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -43,11 +43,11 @@ public class Area implements Serializable {
         this.restaurant = restaurant;
     }
 
-    public List<fr.wamap.youfood.entities.YFTable> getTables() {
+    public List<YFTable> getTables() {
         return tables;
     }
 
-    public void setTables(List<fr.wamap.youfood.entities.YFTable> tables) {
+    public void setTables(List<YFTable> tables) {
         this.tables = tables;
-    }
+    } 
 }

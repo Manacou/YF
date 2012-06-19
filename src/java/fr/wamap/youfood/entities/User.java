@@ -22,6 +22,10 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idUser;
     
+    @ManyToOne
+    @JoinColumn(name="restaurant_fk")
+    private Restaurant restaurant;
+    
     @NotNull
     private String login;
     
@@ -33,6 +37,8 @@ public class User implements Serializable {
     
     @NotNull
     private String lastName;
+    
+    private Long idStatus;
 
     public String getFirstName() {
         return firstName;
@@ -73,4 +79,21 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public Long getIdStatus() {
+        return idStatus;
+    }
+
+    public void setIdStatus(Long idStatus) {
+        this.idStatus = idStatus;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+    
 }

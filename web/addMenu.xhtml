@@ -6,6 +6,8 @@
     xmlns:f="http://java.sun.com/jsf/core">
    
     <ui:define name="content">
+        <c:choose>
+            <c:when test="#{login.statut == 2}">
         <h2>Ajouter un menu</h2>
         
         <c:when test="#{!empty addMenu.menuE}">
@@ -14,10 +16,21 @@
             </div>
         </c:when>
         <h:form>
-            <h:outputLabel for="label" value="Intitulé : " class="label"/>
-            <h:inputText id="label" value="#{addMenu.label}"/><br />
-            <h:commandButton value="OK" class="button" action="#{addMenu.AddMenu}"/>
+            <ul>
+            <li><img src="res/images/backgrounds/menu_bg_left.png" alt="left" /></li>
+            <li><h:outputLabel for="label" value="Intitulé : " class="label"/></li>
+            <li><h:inputText id="label" value="#{addMenu.label}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_inbetween.png" alt="inbetween" /></li>
+            <li><h:commandLink value="OK" class="button" action="#{addMenu.AddMenu}"/></li>
+            <li><img src="res/images/backgrounds/menu_bg_right.png" alt="right" /></li>
+            </ul><br />
         </h:form>
+        </c:when>
+            <c:otherwise>
+                <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
+                Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être redirigé dans 10 secondes
+            </c:otherwise>
+        </c:choose>
     </ui:define>
     
 </ui:composition>

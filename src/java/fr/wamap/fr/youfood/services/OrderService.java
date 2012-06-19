@@ -5,6 +5,7 @@
 package fr.wamap.fr.youfood.services;
 
 import fr.wamap.youfood.daos.OrderDao;
+import fr.wamap.youfood.entities.Restaurant;
 import fr.wamap.youfood.entities.YFOrder;
 import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
@@ -32,6 +33,11 @@ public class OrderService {
         return od.getOrdersbyStatus(status);
     }
     
+    public List<YFOrder> getOrderByStatusAndByRestaurant(int status, Restaurant restaurant)
+    {
+        return od.getOrderByStatusAndByRestaurant(status, restaurant);
+    }
+    
     public YFOrder updateOrder(YFOrder order)
     {
         return od.updateOrder(order);
@@ -50,6 +56,11 @@ public class OrderService {
     public void setReady(YFOrder order)
     {
         od.setReady(order);
+    }
+    
+    public void setOnCook(YFOrder order)
+    {
+        od.setOnCook(order);
     }
     
     public void deleteOrder(YFOrder order)

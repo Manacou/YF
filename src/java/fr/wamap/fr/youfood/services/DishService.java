@@ -22,6 +22,10 @@ public class DishService {
         dd.createDish(dish);
     }
     
+    public List<Dish> getAllDishes()
+    {
+        return dd.getAllDishes();
+    }
     public List<Dish> getDishesByOrder(YFOrder order)
     {
         return dd.getDishesByOrder(order);

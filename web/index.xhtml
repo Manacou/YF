@@ -20,16 +20,6 @@
              </div>
         </div>
         SLIDESHOW -->
-        <h:dataTable value="#{listRestaurants.restaurantsDM}" var="r">
-                        <h:column>
-                            <!-- Les facets header sont l'entete du tableau -->
-                            <f:facet name="header">
-                                <h:outputText value="Ville" />
-                            </f:facet>
-                            <!-- On mets chaque valeur des propriétés des utilisateurs -->
-                            <h:outputText value="#{r.city}" />
-                        </h:column>
-</h:dataTable>
     </ui:define>
     
 </ui:composition>

@@ -9,8 +9,58 @@ body
     width: 1000px;
     margin: 25px auto;
     padding: 15px;
+    font-family: "Play";
 }
 
+a
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul
+{
+	color: white;
+	list-style: none;
+	display: block;
+        margin: 10px;
+}
+
+li
+{
+	float: left;
+	background-color: black;
+	height: 25px;
+	font-family: "Play";
+}
+
+li img
+{
+	background-color: white;
+	margin: 0px;
+}
+
+table
+{
+    border: 2px solid black
+}
+
+thead
+{
+    background-color: black;
+    color: white;
+}
+
+thead .head
+{
+    background-color: white;
+    color: black;
+}
+
+thead img
+{
+    background-color: white;
+}
 /* MENU */
 #menu
 {

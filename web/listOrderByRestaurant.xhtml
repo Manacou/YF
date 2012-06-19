@@ -7,25 +7,25 @@
    
     <ui:define name="content">
         <c:choose>
-            <c:when test="#{(login.statut == 2)}" >
-        <meta http-equiv="refresh" content="30;url=http://localhost:8080/YouFood/youfood/listOrders.xhtml" />
-        <h2>Commandes</h2>
-        <h:dataTable value="#{listOrder.ordersDM}" var="o">
-                        <h:column>
-                            <!-- Les facets header sont l'entete du tableau -->
-                            <f:facet name="header">
-                                <h:outputText value="ID" />
-                            </f:facet>
-                            <!-- On mets chaque valeur des propriétés des utilisateurs -->
-                            <h:outputText value="#{o.idOrder}" />
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Détails" />
-                            </f:facet>
+            <c:when test="#{((login.statut == 1) and (login.idRestaurant == listOrderByRestaurant.idRestaurant)) or (login.statut == 2)}" >
+                <meta http-equiv="refresh" content="30;url=http://localhost:8080/YouFood/youfood/listOrderByResteaurant.xhtml?idRestaurant=#{listOrderByRestaurant.idRestaurant}" />
+                <h2>Liste des commandes</h2>
+                <h:dataTable value="#{listOrderByRestaurant.ordersDM}" var="o">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id" />
+                        </f:facet>
+                        <h:outputText value="#{o.idOrder}" />
+                    </h:column>
+                    <h:column>
                             <h:link value="Détails" outcome="detailOrder" >
                                 <f:param name="id" value="#{o.idOrder}" />
                             </h:link>
+                        </h:column>
+                    <h:column>
+                            <h:form>
+                                <h:commandButton value="En cours" action="#{listOrder.onCook(o)}" />
+                            </h:form>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -35,7 +35,7 @@
                                 <h:commandButton value="Prête" action="#{listOrder.setReady(o)}" />
                             </h:form>
                         </h:column>
-</h:dataTable>
+                </h:dataTable>
             </c:when>
             <c:otherwise>
                 <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />

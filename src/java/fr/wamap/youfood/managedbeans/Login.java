@@ -6,6 +6,7 @@ package fr.wamap.youfood.managedbeans;
  */
 
 
+import fr.wamap.fr.youfood.services.UserService;
 import fr.wamap.youfood.daos.UserDao;
 import fr.wamap.youfood.entities.User;
 import javax.ejb.EJB;
@@ -17,11 +18,13 @@ import javax.faces.bean.SessionScoped;
 public class Login {
 
     @EJB
-    private UserDao userDao;
+    private UserService us;
     
     private String login;
     private String password;
-    private boolean statut;
+    private Long statut;
+    private Long id;
+    private Long idRestaurant;
 
     public String getLogin() {
         return login;
@@ -39,34 +42,54 @@ public class Login {
         this.password = password;
     }
 
-    public boolean isStatut() {
+    public Long getStatut() {
         return statut;
     }
 
-    public void setStatut(boolean statut) {
+    public void setStatut(Long statut) {
         this.statut = statut;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getIdRestaurant() {
+        return idRestaurant;
+    }
+
+    public void setIdRestaurant(Long idRestaurant) {
+        this.idRestaurant = idRestaurant;
+    }
+    
     
     public String Login() {
         
-        User user = userDao.getUserByLogin(login);
-        
+        User user = us.getUserByLogin(login);
+    
         if (user != null)
         {
+            
             if(user.getPassword().equals(password))
             {
-                setStatut(true);
+                setId(user.getIdUser());
+                setStatut(user.getIdStatus());
+                //setIdRestaurant(user.getRestaurant().getIdRestaurant());
                 return "test";
             }
             else
             {
-                setStatut(false);
+                setStatut(Long.decode("0"));
                 return "test";
             }
         }
         else
         {
-            setStatut(false);
+            setStatut(Long.decode("0"));
             return "false";
         }
     }

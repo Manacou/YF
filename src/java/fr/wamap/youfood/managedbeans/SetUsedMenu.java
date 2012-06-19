@@ -37,12 +37,12 @@ public class SetUsedMenu {
         return ms.getAllMenus();
     }
     
-    public void SetUsedMenu() {
+    public void SetUsedMenu(Menu menu2) {
         
         Menu menu = ms.getUsedMenu();
         
         ms.unsetUsedMenu(menu.getIdMenu());
         
-        ms.setUsedMenu(getIdMenu());
+        ms.setUsedMenu(menu2.getIdMenu());
     }
 }

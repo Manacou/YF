@@ -13,6 +13,7 @@ import javax.ejb.Local;
 public interface DishDao {
     
     public void createDish(Dish dish);
+    public List<Dish> getAllDishes();
     public List<Dish> getDishesByOrder(YFOrder order);
     public void deleteDish(Dish dish);
 }

@@ -62,4 +62,20 @@
             <to-view-id>/ordered.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule> 
+    
+    <navigation-rule>
+        <from-view-id>/setAdministrator.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listUsers</from-outcome>
+            <to-view-id>/listUsers.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/deleteUser.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>listUsers</from-outcome>
+            <to-view-id>/listUsers.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

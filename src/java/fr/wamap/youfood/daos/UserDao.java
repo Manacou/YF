@@ -12,8 +12,9 @@ import javax.ejb.Local;
 public interface UserDao {
     
     public void createUser(User user);
+    public User getUserById(Long id);
     public User getUserByLogin(String login);
     public List<User> getAllUsers();
-    public User updateUser(User user);
+    public void updateUser(User user);
     public void deleteUser(User user);
 }

@@ -24,6 +24,12 @@ public class DishDaoJpa implements DishDao{
         
         em.persist(dish);
     }
+    
+    @Override
+    public List<Dish> getAllDishes()
+    {
+        return em.createQuery("SELECT d FROM Dish d").getResultList();
+    }
 
     @Override
     public List<Dish> getDishesByOrder(YFOrder order) {
@@ -39,7 +45,5 @@ public class DishDaoJpa implements DishDao{
     public void deleteDish(Dish dish) {
         
         em.remove(dish);
-    }
-    
-    
+    } 
 }

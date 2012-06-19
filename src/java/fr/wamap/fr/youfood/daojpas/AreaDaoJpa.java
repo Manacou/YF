@@ -15,13 +15,13 @@ import javax.persistence.Query;
 
 @Stateless
 public class AreaDaoJpa implements AreaDao{
-
+    
     @PersistenceContext
     EntityManager em;
     
     @Override
-    public void createArea(Area area) {
-        
+    public void createArea(Area area)
+    {
         em.persist(area);
     }
     
@@ -34,8 +34,8 @@ public class AreaDaoJpa implements AreaDao{
     @Override
     public List<Area> getAreasByRestaurant(Restaurant restaurant) {
         
-        Query query = em.createQuery("SELECT a FROM Area a WHERE a.restaurant = :restaurantId ");
-        query.setParameter("restaurantId", restaurant);
+        Query query = em.createQuery("SELECT a FROM Area a WHERE a.restaurant = :restaurant");
+        query.setParameter("restaurant", restaurant);
         
         return query.getResultList();
     }
@@ -50,5 +50,5 @@ public class AreaDaoJpa implements AreaDao{
     public void deleteArea(Area area) {
         
         em.remove(area);
-    }
+}
 }

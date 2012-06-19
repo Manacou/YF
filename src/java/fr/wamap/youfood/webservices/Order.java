@@ -27,7 +27,7 @@ public class Order {
     @WebMethod
     public String[] getFinishedOrder()
     {
-        List<YFOrder> finishedOrders = os.getOrdersbyStatus(2);
+        List<YFOrder> finishedOrders = os.getOrdersbyStatus(3);
         List<String> rtn = new ArrayList<String>();
         
         for(int i = 0; i < finishedOrders.size(); i++)

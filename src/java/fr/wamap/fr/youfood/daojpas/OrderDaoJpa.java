@@ -5,6 +5,7 @@
 package fr.wamap.fr.youfood.daojpas;
 
 import fr.wamap.youfood.daos.OrderDao;
+import fr.wamap.youfood.entities.Restaurant;
 import fr.wamap.youfood.entities.YFOrder;
 import fr.wamap.youfood.entities.YFTable;
 import java.util.List;
@@ -39,6 +40,16 @@ public class OrderDaoJpa implements OrderDao{
         
         return query.getResultList();
     }
+    
+    @Override
+    public List<YFOrder> getOrderByStatusAndByRestaurant(int status, Restaurant restaurant)
+    {
+        Query query = em.createQuery("SELECT o FROM YFOrder o WHERE o.status = :status AND o.restaurant = :restaurant");
+        query.setParameter("status", status);
+        query.setParameter("restaurant", restaurant);
+        
+        return query.getResultList();
+    }
 
     @Override
     public YFOrder updateOrder(YFOrder order) {
@@ -60,12 +71,19 @@ public class OrderDaoJpa implements OrderDao{
     @Override
     public void setDelivered(YFOrder order)
     {
-        order.setStatus(3);
+        order.setStatus(4);
         em.merge(order);
     }
     
     @Override
     public void setReady(YFOrder order)
+    {
+        order.setStatus(3);
+        em.merge(order);
+    }
+    
+    @Override
+    public void setOnCook(YFOrder order)
     {
         order.setStatus(2);
         em.merge(order);

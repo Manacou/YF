@@ -8,35 +8,24 @@
     <ui:define name="content">
         <c:choose>
             <c:when test="#{(login.statut == 2)}" >
-        <meta http-equiv="refresh" content="30;url=http://localhost:8080/YouFood/youfood/listOrders.xhtml" />
-        <h2>Commandes</h2>
-        <h:dataTable value="#{listOrder.ordersDM}" var="o">
+        <h2>Produits commandés</h2>
+        <h:dataTable value="#{listDishes.listDishes}" var="d">
                         <h:column>
                             <!-- Les facets header sont l'entete du tableau -->
                             <f:facet name="header">
-                                <h:outputText value="ID" />
+                                <h:outputText value="Intitulé" />
                             </f:facet>
                             <!-- On mets chaque valeur des propriétés des utilisateurs -->
-                            <h:outputText value="#{o.idOrder}" />
+                            <h:outputText value="#{d.product.label}" />
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="Détails" />
+                                <h:outputText value="Type" />
                             </f:facet>
-                            <h:link value="Détails" outcome="detailOrder" >
-                                <f:param name="id" value="#{o.idOrder}" />
-                            </h:link>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Prête" />
-                            </f:facet>
-                            <h:form>
-                                <h:commandButton value="Prête" action="#{listOrder.setReady(o)}" />
-                            </h:form>
+                            <h:outputText value="#{d.product.idType}" />
                         </h:column>
 </h:dataTable>
-            </c:when>
+        </c:when>
             <c:otherwise>
                 <meta http-equiv="refresh" content="10;url=http://localhost:8080/YouFood/youfood/index.xhtml" />
                 Vous n'avez pas l'autorisation d'accèder à cette page. Vous allez être regirigé dans 10 secondes

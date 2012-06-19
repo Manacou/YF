@@ -34,7 +34,7 @@ public class AreaService {
     public Area updateArea(Area area)
     {
         return ad.updateArea(area);
-    }
+}
     
     public void deleteArea(Area area)
     {
